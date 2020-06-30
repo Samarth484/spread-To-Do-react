@@ -1,33 +1,36 @@
 import React, { useState } from "react";
-
+import List from "./List";
 function App() {
-  const [newTask, AddNewTask] = useState("");
-  const [itemsArray, AddItem] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState([]);
+
   function handleChange(event) {
-    var latestErrand = event.target.value;
-    AddNewTask(latestErrand);
+    const newValue = event.target.value;
+    setInputText(newValue);
   }
-  function handleClick() {
-    AddItem(prevValue => {
-      return [...prevValue, newTask];
+
+  function addItem() {
+    setItems(prevItems => {
+      return [...prevItems, inputText];
     });
-    AddNewTask("");
+    setInputText("");
   }
+
   return (
     <div className="container">
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input onChange={handleChange} type="text" value={newTask} />
-        <button onClick={handleClick}>
+        <input onChange={handleChange} type="text" value={inputText} />
+        <button onClick={addItem}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          {itemsArray.map(val => (
-            <li>{val}</li>
+          {items.map(todoItem => (
+            <List content={todoItem} />
           ))}
         </ul>
       </div>
