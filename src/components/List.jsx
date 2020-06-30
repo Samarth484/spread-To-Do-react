@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-function List(props) {
-  const [isDone, setIsDone] = useState(false);
-  function handleChange() {
-    setIsDone(prevValue => !prevValue);
-  }
+import React from "react";
 
+function List(props) {
   return (
     <li
-      onClick={handleChange}
-      style={{ textDecoration: isDone && "line-through" }}
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
     >
       {props.content}
     </li>
