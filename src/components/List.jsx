@@ -2,13 +2,15 @@ import React from "react";
 
 function List(props) {
   return (
-    <li
-      onClick={() => {
-        props.onChecked(props.id);
-      }}
-    >
+    <div 
+    onClick={() => {
+      props.onChecked(props.id);
+    }}
+  >
+    <li>
       {props.content}
     </li>
+    </div>
   );
 }
 

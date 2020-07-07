@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import List from "./List";
+
 function App() {
   const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([]);
@@ -7,6 +8,7 @@ function App() {
   function handleChange(event) {
     const newValue = event.target.value;
     setInputText(newValue);
+    
   }
 
   function addItem() {
